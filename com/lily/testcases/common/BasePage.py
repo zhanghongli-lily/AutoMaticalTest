@@ -1,6 +1,7 @@
 from com.lily.testcases.common.Browser import Browser
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from com.lily.config.config import url
 
 
@@ -14,7 +15,7 @@ class BasePage(Browser):
 
     def find_element_by_id(self, id):
         try:
-            WebDriverWait(self.driver.find_element_by_id(By.ID, id), 5)
+            self.driver.find_element_by_id(By.ID, id)
         except Exception as e:
             print("定位失败：%s", e)
 
@@ -72,7 +73,8 @@ class BasePage(Browser):
 
             ele = self.driver.find_element(element)
             ele.send_keys(text)
-
         except Exception as e:
-
             print("发送失败：%s", e)
+
+    def WebDriverWait(self, element, time):
+        WebDriverWait(self.driver, time).until(self, EC.text_to_be_present_in_element(element))

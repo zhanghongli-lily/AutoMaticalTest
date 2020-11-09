@@ -22,7 +22,6 @@ drivers_exetuble = {
 class UnsupportBrowserTypeError(Exception):
     pass
 
-
 class Browser(object):
     def __init__(self, type="chrome"):
         self._type = type.lower();

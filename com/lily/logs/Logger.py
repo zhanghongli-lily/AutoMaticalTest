@@ -9,7 +9,12 @@ class Logger(object):
         self.logger.setLevel(level=level)
         self.format = '%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s'
 
+    def getLogger(self):
+
+        return self.logger
+
     def info(self):
+
         self.logger.info("info")
         print("console")
 
